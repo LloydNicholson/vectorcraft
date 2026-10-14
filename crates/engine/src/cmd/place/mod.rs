@@ -253,7 +253,7 @@ fn layer_art(layers: &[Arc<Node>]) -> impl Iterator<Item = &Arc<Node>> {
 }
 
 /// A clipping path of rectangle `r`, with id `id`.
-fn clip_path(id: NodeId, r: Rect) -> Node {
+pub(crate) fn clip_path(id: NodeId, r: Rect) -> Node {
     let mut c = Node::path(id, shapes::rectangle(r), Appearance::basic(Paint::None, Paint::None, 0.0));
     if let NodeKind::Path { clipping, .. } = &mut c.kind {
         *clipping = true;
